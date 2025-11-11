@@ -1,4 +1,4 @@
-import ollama
+import ollama,re
 from sqlalchemy import select, insert
 import DB
 
@@ -37,8 +37,6 @@ def generate_comment_with_ollama(article):
         print(f"[Ollama 오류] 기사 ID {article.get('id', 'N/A')} | 오류: {e}")
         return None
 
-
-import re
 
 def generate_and_save_comments():
     with engine.begin() as conn:
