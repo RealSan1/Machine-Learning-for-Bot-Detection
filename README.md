@@ -7,7 +7,7 @@
 ## 데이터 수집 과정
 
 ### 1. 뉴스 기사 목록 크롤링
-- 네이버 정치 섹션(https://news.naver.com/section/100)에서 최신 뉴스 기사 URL을 수집  
+- 네이버 정치 섹션(https://news.naver.com/section/100) 에서 최신 뉴스 기사 URL을 수집  
 - `data-imp-url` 속성을 활용하여 원문 기사 URL 획득  
 - 페이지네이션 및 속도 제한 적용으로 안정적 데이터 수집 구현
 
