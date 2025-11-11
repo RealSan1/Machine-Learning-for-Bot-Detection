@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table, Column, Text, Integer, ForeignKey, VARCHAR
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, ForeignKey
 from sqlalchemy.dialects.mysql import LONGTEXT
 
 DB_USER = "root"
@@ -21,7 +21,7 @@ metadata = MetaData()
 NEWS = Table(
     "NEWS", metadata,
     Column("newID", Integer, primary_key=True),
-    Column("Title", VARCHAR),
+    Column("Title", LONGTEXT),
     Column("Content", LONGTEXT)
 )
 
@@ -29,6 +29,6 @@ COMMENT = Table(
     "COMMENT", metadata,
     Column("commentID", Integer, primary_key=True, autoincrement=True),
     Column("newID", Integer, ForeignKey("news.newID", onupdate="CASCADE", ondelete="CASCADE")),
-    Column("comment", Text),
+    Column("comment", LONGTEXT),
     Column("judge", Integer)
 )
