@@ -40,7 +40,8 @@ def generate_comment_with_ollama(article):
 
 def generate_and_save_comments():
     with engine.begin() as conn:
-        result = conn.execute(select(NEWS.c.newID, NEWS.c.Title, NEWS.c.Content))
+        result = conn.execute(select(NEWS.c.newID, NEWS.c.Title, NEWS.c.Content).where(NEWS.c.newID > 333))
+            
         articles = result.all()
 
     for art in articles:

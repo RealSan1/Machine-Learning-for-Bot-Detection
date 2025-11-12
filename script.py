@@ -260,7 +260,7 @@ def save_article_to_db(article):
                     insert(COMMENT).values(
                         newID=news_id,
                         comment=cmt,
-                        judge=None
+                        judge=0
                     )
                 )
             print(f"저장 완료: {article['title']} (댓글 {len(article['comments'])}개)")
@@ -282,7 +282,7 @@ async def process_article(article_info):
 
 async def main():
     print("수집 시작")
-    articles = fetch_article_urls(date="20191025", max_pages=300, sid=100)
+    articles = fetch_article_urls(date="20251112", max_pages=300, sid=100)
 
     if not articles:
         print("수집된 기사 없음")

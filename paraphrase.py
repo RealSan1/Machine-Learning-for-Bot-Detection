@@ -1,15 +1,13 @@
 import ollama
-import re
 import DB
-from sqlalchemy import select, insert
+from sqlalchemy import select, insert, and_, func
 
 engine = DB.engine
 COMMENT = DB.COMMENT
 
 def paraphrase_comment_with_ollama(comment_text):
     prompt = f"""
-    다음 댓글을 자연스럽게 바꾸되, 의미는 유지하세요.
-    길이는 최대 100자, 최소 40자로 다양하게 작성하고, 출력은 한 문장으로만 작성하세요.
+    다음 댓글을 자연스럽게 바꾸되, 의미는 유지하고, 출력은 한 문장으로만 작성하세요.
     특수기호 사용 금지:
     댓글: {comment_text}
     """
@@ -34,9 +32,23 @@ def paraphrase_comment_with_ollama(comment_text):
 
 def paraphrase_and_insert_comments():
     with engine.begin() as conn:
+        # newID별 가장 작은 commentID 하나씩만 가져오는 서브쿼리
+        subq = (
+            select(
+                COMMENT.c.newID,
+                func.min(COMMENT.c.commentID).label("min_commentID")
+            )
+            .where(
+                and_(COMMENT.c.judge == 1, COMMENT.c.newID > 88)
+            )
+            .group_by(COMMENT.c.newID)
+            .subquery()
+        )
+
+        # subq에 join하여 실제 댓글 내용 가져오기
         result = conn.execute(
             select(COMMENT.c.commentID, COMMENT.c.newID, COMMENT.c.comment)
-            .where(COMMENT.c.judge == 1)
+            .join(subq, COMMENT.c.commentID == subq.c.min_commentID)
         )
         comments = result.all()
 
