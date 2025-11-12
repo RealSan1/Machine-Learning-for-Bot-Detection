@@ -139,11 +139,11 @@ def paraphrase_comment(comment_text):
 ---
 # Sentence-BERT 임베딩 적용 개요
 
-## 데이터 구성
+## [데이터 구성](https://github.com/RealSan1/Machine-Learning-for-Bot-Detection/blob/main/dataProcessing/commentData.csv)
 원본 CSV 파일에는 다음 컬럼이 포함되어 있습니다:  
-- 뉴스제목 (title)  
-- 뉴스내용 (content)  
-- 댓글 (comment)  
+- 뉴스제목 (title)
+- 뉴스내용 (content)
+- 댓글 (comment)
 - 봇판단 (is_bot, 0: 휴면댓글, 1: 봇댓글)
 
 ## 임베딩 과정
@@ -162,5 +162,3 @@ def paraphrase_comment(comment_text):
 - 봇 탐지 모델의 입력 특징(feature)으로 활용되어 정확도 및 재현율 개선 기대
 
 ---
-
-Sentence-BERT 임베딩 적용으로 자연어 표현력 강화 및 봇 탐지 효율성 향상을 도모하고 있습니다.
