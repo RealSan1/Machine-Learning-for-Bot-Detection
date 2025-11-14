@@ -20,7 +20,7 @@ with engine.connect() as conn:
     df = pd.read_sql(query, conn)
 
 # CSV 저장
-output_path = "dataProcessing/commentData.csv"
+output_path = "dataProcessing/dataset/commentData.csv"
 df.to_csv(output_path, index=False, encoding="utf-8-sig")
 
 print(f"CSV 추출 완료: {len(df)}건 저장됨 → {output_path}")

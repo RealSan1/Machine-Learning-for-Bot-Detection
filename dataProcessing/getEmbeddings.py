@@ -15,8 +15,8 @@ embeddings = model.encode(df["text"].tolist(), batch_size=64, show_progress_bar=
 labels = df["is_bot"].values
 
 # 저장
-np.save("dataProcessing/commentData_sbert_embeddings.npy", embeddings)
-np.save("dataProcessing/commentData_labels.npy", labels)
+np.save("dataProcessing/dataset/commentData_sbert_embeddings.npy", embeddings)
+np.save("dataProcessing/dataset/commentData_labels.npy", labels)
 
 print("Saved SBERT embeddings:", embeddings.shape)
 print("Saved labels:", labels.shape)
