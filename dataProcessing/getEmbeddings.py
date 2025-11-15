@@ -3,7 +3,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 
 # 데이터 로드
-df = pd.read_csv("dataProcessing/commentData.csv")
+df = pd.read_csv("dataProcessing/dataset/commentData.csv")
 df["text"] = df["title"].fillna("") + " " + df["content"].fillna("") + " " + df["comment"].fillna("")
 
 model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
@@ -12,7 +12,7 @@ model = SentenceTransformer('snunlp/KR-SBERT-V40K-klueNLI-augSTS')
 print("Computing embeddings with Sentence-BERT...")
 embeddings = model.encode(df["text"].tolist(), batch_size=64, show_progress_bar=True)
 
-labels = df["is_bot"].values
+labels = df["judge"].values
 
 # 저장
 np.save("dataProcessing/dataset/commentData_sbert_embeddings.npy", embeddings)

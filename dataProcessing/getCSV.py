@@ -11,7 +11,7 @@ SELECT
     n.Title AS title,
     n.Content AS content,
     c.comment AS comment,
-    c.judge AS is_bot
+    c.judge AS judge
 FROM COMMENT c
 JOIN NEWS n ON c.newID = n.newID;
 """)
