@@ -146,7 +146,7 @@ def paraphrase_comment(comment_text):
 - 뉴스제목 (title)
 - 뉴스내용 (content)
 - 댓글 (comment)
-- 봇판단 (is_bot, 0: 휴면댓글, 1: 봇댓글)
+- 봇판단 (judge, 0: 휴면댓글, 1: 봇댓글)
 
 ## 임베딩 과정
 1. 뉴스제목, 뉴스내용, 댓글 텍스트를 결합하여 하나의 문장 단위 텍스트 생성  
