@@ -4,7 +4,7 @@
 한국어 SBERT 임베딩 + 간단한 MLP로 이진 분류 수행
 
 **성능 (Test Set 기준)**  
-> Accuracy: 0.9864 | Precision: 0.9931 | Recall: 0.9795 | **F1: 0.9862** | **AUC: 0.9994**
+> Accuracy: 0.9898 | Precision: 1.0000 | Recall: 0.9795 | **F1: 0.9896** | **AUC: 0.9994**
 
 ## Requirements
 - Python 3.10 이상 (Google Colab 기준)

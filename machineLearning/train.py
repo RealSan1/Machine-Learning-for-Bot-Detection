@@ -19,15 +19,15 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = MyModel(input_dim=x_train.size(1)).to(device)
     criterion = nn.BCEWithLogitsLoss()
-    optimizer = optim.Adam(model.parameters(), lr=1e-3, weight_decay=1e-2)
+    optimizer = optim.AdamW(model.parameters(), lr=1e-4, weight_decay=0)
     
     trainer = Trainer(model, criterion, optimizer, device=device)
     
     trainer.fit(
         x_train, y_train, x_valid, y_valid,
         n_epochs=200,
-        batch_size=128,
-        early_stop_patience=10,
+        batch_size=512,
+        early_stop_patience=20,
         print_every=10
     )
     
