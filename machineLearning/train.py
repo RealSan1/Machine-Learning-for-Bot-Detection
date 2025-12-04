@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 
 from model import MyModel
-from utils import load_data, split_data, find_optimal_threshold, evaluate_model, plot_loss_history, CommentPredictor
+from utils import load_data, split_data, find_optimal_threshold, plot_loss_history, evaluate_model,  CommentPredictor
 from trainer import Trainer
 
 if __name__ == "__main__":
@@ -48,11 +48,11 @@ if __name__ == "__main__":
         print(f"{k.capitalize():9}: {v:.4f}")
     
     # 모델 저장
-    torch.save(model.state_dict(), "comment_classifier.pth")
+    torch.save(model.state_dict(), "machineLearning\comment_classifier.pth")
     print("\n모델 저장 완료 → comment_classifier.pth")
     
     # 예측기 테스트
-    predictor = CommentPredictor(model_path="comment_classifier.pth", threshold=best_thresh)
+    predictor = CommentPredictor(model_path="machineLearning\comment_classifier.pth", threshold=best_thresh)
     
     test_comments = [
         "특검에만 의존 말고 독자 조사도 해야 공무원들이 사회적 책임을 명확히 이행하고 있는지 확인하는 것이 우리 모두의 권리이며 이는 국가의 신뢰와 직결되기 때문에 매우 중요합니다",
