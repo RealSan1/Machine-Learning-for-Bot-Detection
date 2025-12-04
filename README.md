@@ -162,4 +162,31 @@ def paraphrase_comment(comment_text):
 ## 활용
 - 저장된 Sentence-BERT 임베딩 벡터와 레이블을 기반으로 머신러닝/딥러닝 모델 학습  
 - 봇 탐지 모델의 입력 특징(feature)으로 활용되어 정확도 및 재현율 개선 기대
+
 ---
+# 모델
+```mermaid
+graph TD
+
+    A[Input] --> B[Linear input_dim to 32]
+    B --> C[BatchNorm1d 32]
+    C --> D[SiLU]
+    D --> E[Dropout 0.1]
+    E --> F[Linear 32 to 1]
+    F --> G[Output]
+
+```
+
+## 다층 퍼셉트론(Multi Layer Perceptron) 이진분류
+- **Layer**: 5개
+-  **손실함수**: BCEWithLogitsLoss
+- **활성화함수**: SiLU
+- Early Stopping (patience=20)
+- 데이터 분할: Train 85% / Valid 7.5% / Test 7.5%
+> Train / Valid / Test =  3335 294 295
+
+
+## 모델 성능
+<img width="1017" height="552" alt="image" src="https://github.com/user-attachments/assets/d5c540f5-dad1-481f-b44b-b8512194f963" />
+
+> Accuracy : 0.9898 Precision: 1.0000 Recall   : 0.9795 F1-score : 0.9896 ROC AUC  : 0.9994
